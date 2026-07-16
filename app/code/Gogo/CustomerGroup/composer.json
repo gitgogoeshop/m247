@@ -1,0 +1,22 @@
+{
+    "name": "gogo/module-customer-group",
+    "description": "Display customer group in My Account dashboard",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "php": "~8.1.0||~8.2.0",
+        "magento/framework": "^103.0",
+        "magento/module-customer": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Gogo\\CustomerGroup\\": ""
+        }
+    }
+}

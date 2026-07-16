@@ -1,0 +1,43 @@
+<?php
+/**
+ * @var \Gogo\FreeShippingBanner\Block\Banner $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+
+if (!$block->isEnabled() || $block->isBannerClosed()) {
+    return;
+}
+
+$content = $block->getBannerContent();
+$bgColor = $block->getBackgroundColor();
+$textColor = $block->getTextColor();
+$showClose = $block->showCloseButton();
+$threshold = $block->getThresholdValue();
+$jsonConfig = $block->getJsonConfig();
+?>
+
+<div id="gogo-fsb-wrapper"
+     class="gogo-free-shipping-banner"
+     data-threshold="<?= $block->escapeHtmlAttr($threshold) ?>"
+     style="background-color: <?= $block->escapeHtmlAttr($bgColor) ?>; color: <?= $block->escapeHtmlAttr($textColor) ?>;">
+    <div class="gogo-fsb-content">
+        <?= /* @noEscape */ $content ?>
+    </div>
+    <?php if ($showClose): ?>
+    <button type="button"
+            class="gogo-fsb-close"
+            title="<?= $block->escapeHtmlAttr(__('Close')) ?>"
+            aria-label="<?= $block->escapeHtmlAttr(__('Close')) ?>">
+        <span aria-hidden="true">×</span>
+    </button>
+    <?php endif; ?>
+</div>
+
+<?php
+$scriptString = <<<SCRIPT
+require(['jquery', 'Gogo_FreeShippingBanner/js/banner'], function(\$, banner){
+    banner.init({$jsonConfig});
+});
+SCRIPT;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>

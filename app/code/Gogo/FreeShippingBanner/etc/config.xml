@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <gogo_free_shipping_banner>
+            <general>
+                <enabled>1</enabled>
+                <content><![CDATA[<strong>Free shipping</strong> on orders over <strong>HK$300</strong>.]]></content>
+                <threshold_value>300</threshold_value>
+                <display_closed_days>7</display_closed_days>
+                <banner_bg_color>#F5F5F5</banner_bg_color>
+                <banner_text_color>#333333</banner_text_color>
+                <show_close_button>1</show_close_button>
+            </general>
+        </gogo_free_shipping_banner>
+    </default>
+</config>

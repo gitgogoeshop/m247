@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="gogo" translate="label" sortOrder="100">
+            <label>Gogo Extensions</label>
+        </tab>
+        <section id="gogo_free_shipping_banner" translate="label" type="text"
+                 sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Free Shipping Banner</label>
+            <tab>gogo</tab>
+            <resource>Gogo_FreeShippingBanner::config</resource>
+            <group id="general" translate="label" type="text"
+                   sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enabled" translate="label" type="select"
+                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Banner</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="content" translate="label" type="textarea"
+                       sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Content (HTML allowed)</label>
+                    <comment><![CDATA[Use <strong> to highlight text. Example: <strong>Free shipping</strong> on orders over <strong>HK$300</strong>.]]></comment>
+                </field>
+                <field id="threshold_value" translate="label" type="text"
+                       sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free Shipping Threshold Amount</label>
+                    <comment>Used for data attributes (future JS enhancements). Numeric only.</comment>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                </field>
+                <field id="display_closed_days" translate="label" type="text"
+                       sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Hide Banner Duration (days)</label>
+                    <comment>Number of days to hide after user closes the banner.</comment>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                </field>
+                <field id="banner_bg_color" translate="label" type="text"
+                       sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment>Hex color code. Example: #F5F5F5</comment>
+                    <validate>validate-color</validate>
+                </field>
+                <field id="banner_text_color" translate="label" type="text"
+                       sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <comment>Hex color code. Example: #333333</comment>
+                    <validate>validate-color</validate>
+                </field>
+                <field id="show_close_button" translate="label" type="select"
+                       sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Close Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

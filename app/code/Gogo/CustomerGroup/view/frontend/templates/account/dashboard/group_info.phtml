@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Gogo\CustomerGroup\ViewModel\Account\Dashboard\CustomerGroup|null $viewModel
+ */
+use Gogo\CustomerGroup\ViewModel\Account\Dashboard\CustomerGroup;
+
+$viewModel = $block->getData('view_model');
+?>
+<?php if ($viewModel instanceof CustomerGroup && $viewModel->hasGroup()): ?>
+<div class="box box-customer-group">
+    <strong class="box-title">
+        <span><?= $block->escapeHtml(__('Membership Group')) ?></span>
+    </strong>
+    <div class="box-content">
+        <span class="customer-group-badge">
+            <?= $block->escapeHtml($viewModel->getGroupName()) ?>
+        </span>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="customer.account.dashboard.info.blocks">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="customer_account_dashboard_group_info"
+                   template="Gogo_CustomerGroup::account/dashboard/group_info.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">
+                        Gogo\CustomerGroup\ViewModel\Account\Dashboard\CustomerGroup
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

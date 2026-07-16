@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Target `footer` (.footer.content), not `footer-container` (<footer class="page-footer">).
+             Magento 2.4.7 places links/copyright as children of `footer`; footer.phtml is unused. -->
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="gogo.store.address"
+                   template="Gogo_StoreAddress::store_address.phtml"
+                   after="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">
+                        Gogo\StoreAddress\ViewModel\StoreAddress
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

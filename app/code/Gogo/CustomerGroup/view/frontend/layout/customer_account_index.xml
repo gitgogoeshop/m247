@@ -11,8 +11,7 @@
         <referenceContainer name="customer.account.dashboard.info.blocks">
             <block class="Magento\Framework\View\Element\Template"
                    name="customer_account_dashboard_group_info"
-                   template="Gogo_CustomerGroup::account/dashboard/group_info.phtml"
-                   cacheable="false">
+                   template="Gogo_CustomerGroup::account/dashboard/group_info.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">
                         Gogo\CustomerGroup\ViewModel\Account\Dashboard\CustomerGroup

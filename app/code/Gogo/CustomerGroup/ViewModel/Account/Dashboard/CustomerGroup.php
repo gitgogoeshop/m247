@@ -49,8 +49,13 @@ class CustomerGroup implements ArgumentInterface
     public function getGroupId(): ?int
     {
         $group = $this->getGroup();
+        if ($group === null) {
+            return null;
+        }
 
-        return $group ? (int) $group->getId() : null;
+        $id = $group->getId();
+
+        return $id !== null ? (int) $id : null;
     }
 
     /**
@@ -81,6 +86,10 @@ class CustomerGroup implements ArgumentInterface
             }
 
             $customer = $this->customerSession->getCustomerData();
+            if ($customer === null) {
+                return null;
+            }
+
             $groupId = $customer->getGroupId();
 
             if ($groupId === null || (int) $groupId === GroupInterface::NOT_LOGGED_IN_ID) {

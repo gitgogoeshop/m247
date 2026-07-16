@@ -197,6 +197,55 @@ class CustomerGroupTest extends TestCase
         $this->assertFalse($this->viewModel->hasGroup());
     }
 
+    public function testGetGroupNameReturnsNullWhenCustomerDataIsNull(): void
+    {
+        $this->sessionMock->expects($this->once())
+            ->method('getCustomerId')
+            ->willReturn(42);
+
+        $this->sessionMock->expects($this->once())
+            ->method('getCustomerData')
+            ->willReturn(null);
+
+        $this->groupRepositoryMock->expects($this->never())
+            ->method('getById');
+
+        $this->assertNull($this->viewModel->getGroupName());
+        $this->assertFalse($this->viewModel->hasGroup());
+        $this->assertNull($this->viewModel->getGroupId());
+    }
+
+    public function testGetGroupIdReturnsNullWhenGroupIdIsNull(): void
+    {
+        $groupId = 3;
+
+        $customerMock = $this->createMock(CustomerInterface::class);
+        $customerMock->expects($this->once())
+            ->method('getGroupId')
+            ->willReturn($groupId);
+
+        $groupMock = $this->createMock(GroupInterface::class);
+        $groupMock->method('getId')
+            ->willReturn(null);
+        $groupMock->method('getCode')
+            ->willReturn('Retailer');
+
+        $this->sessionMock->expects($this->once())
+            ->method('getCustomerId')
+            ->willReturn(55);
+
+        $this->sessionMock->expects($this->once())
+            ->method('getCustomerData')
+            ->willReturn($customerMock);
+
+        $this->groupRepositoryMock->expects($this->once())
+            ->method('getById')
+            ->with($groupId)
+            ->willReturn($groupMock);
+
+        $this->assertNull($this->viewModel->getGroupId());
+    }
+
     public function testGetGroupIdReturnsIntWhenGroupLoaded(): void
     {
         $groupId = 3;

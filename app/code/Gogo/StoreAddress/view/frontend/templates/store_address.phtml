@@ -1,0 +1,16 @@
+<?php
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Gogo\StoreAddress\ViewModel\StoreAddress|null $viewModel
+ */
+use Gogo\StoreAddress\ViewModel\StoreAddress;
+
+$viewModel = $block->getData('view_model');
+$address = ($viewModel instanceof StoreAddress) ? $viewModel->getFormattedAddress() : '';
+?>
+<?php if ($address !== ''): ?>
+<span class="store-address"><?= $block->escapeHtml($address) ?></span>
+<?php endif; ?>

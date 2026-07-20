@@ -1,0 +1,14 @@
+---
+description: Magento custom module vendor must be Megazend for new code
+globs: app/code/**/*
+alwaysApply: true
+---
+
+# Magento custom vendor
+
+- **New** custom modules MUST use vendor `Megazend`:
+  - Path: `app/code/Megazend/<Module>/`
+  - Module name: `Megazend_<Module>`
+  - PHP namespace: `Megazend\<Module>\...`
+- Do **not** create new `Gogo_*` modules.
+- Keep `Gogo_*` only when editing an existing Gogo module under `app/code/Gogo/`.

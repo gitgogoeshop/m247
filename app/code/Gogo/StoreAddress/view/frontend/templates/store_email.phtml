@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Gogo\StoreAddress\ViewModel\StoreEmail|null $viewModel
+ */
+use Gogo\StoreAddress\ViewModel\StoreEmail;
+
+$viewModel = $block->getData('view_model');
+$email = ($viewModel instanceof StoreEmail) ? $viewModel->getEmail() : '';
+?>
+<?php if ($email !== ''): ?>
+<span class="store-email">
+    <a href="mailto:<?= $block->escapeUrl($email) ?>"><?= $block->escapeHtml($email) ?></a>
+</span>
+<?php endif; ?>

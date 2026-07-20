@@ -1,0 +1,19 @@
+<?php
+/**
+ * @author Trellis Team
+ * @copyright Copyright © 2025 Trellis
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Gogo\StoreAddress\ViewModel\StorePhone|null $viewModel
+ */
+use Gogo\StoreAddress\ViewModel\StorePhone;
+
+$viewModel = $block->getData('view_model');
+$phone = ($viewModel instanceof StorePhone) ? $viewModel->getPhone() : '';
+$phoneUri = ($viewModel instanceof StorePhone) ? $viewModel->getPhoneUri() : '';
+?>
+<?php if ($phone !== ''): ?>
+<span class="store-phone">
+    <a href="tel:<?= $block->escapeHtml($phoneUri) ?>"><?= $block->escapeHtml($phone) ?></a>
+</span>
+<?php endif; ?>

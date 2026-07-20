@@ -17,7 +17,8 @@ description: Magento 2 实现闭环 — 按已确认技术方案编码、构建�
 ### 1. 实现代码
 
 - 严格按下方「技术方案」实现，引用具体 `app/code/Vendor/Module` 路径
-- 遵循项目 `.cursor/rules` 与现有 Gogo 模块风格
+- **硬规则**：新建自定义模块的路径 / PHP namespace / `module.xml` name 一律使用 `Megazend`（`app/code/Megazend/<Module>`、`Megazend_<Module>`）。仅当修改既有 `Gogo_*` 模块时才继续使用 Gogo
+- 遵循项目 `.cursor/rules` 与现有自定义模块风格
 - 若方案与代码库现状冲突，在输出摘要中说明，**不要**擅自改架构
 
 ### 2. 主题与前端（仅当改动涉及 layout XML / phtml / RequireJS / Knockout / Less 时）
@@ -38,7 +39,7 @@ description: Magento 2 实现闭环 — 按已确认技术方案编码、构建�
 
 ### 4. 单元测试
 
-- 调用 @tdd-guide 为本次变更模块补充并运行 PHPUnit（`app/code/Gogo/<Module>/Test/Unit`）
+- 调用 @tdd-guide 为本次变更模块补充并运行 PHPUnit（`app/code/Megazend/<Module>/Test/Unit`；若改的是既有 Gogo 模块则用对应路径）
 - 测试失败则修复代码后重跑，直到通过或明确在摘要中标注无法运行的原因
 
 ### 5. 输出摘要（必须）

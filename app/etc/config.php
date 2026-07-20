@@ -358,6 +358,7 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Gogo_CustomerGroup' => 1,
         'Gogo_FreeShippingBanner' => 1,
+        'Gogo_StoreAddress' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeCustomerBalance' => 1,
         'PayPal_BraintreeGiftCardAccount' => 1,
